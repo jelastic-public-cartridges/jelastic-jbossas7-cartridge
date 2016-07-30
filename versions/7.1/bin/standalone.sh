@@ -183,7 +183,7 @@ while true; do
          -jaxpmodule "javax.xml.jaxp-provider" \
          org.jboss.as.standalone \
          -Djboss.home.dir=\"$JBOSS_HOME\" \
-         "$@"
+         -c $JBOSS_XML_CONFIG "$@"
       JBOSS_STATUS=$?
    else
       # Execute the JVM in the background
@@ -195,7 +195,7 @@ while true; do
          -jaxpmodule "javax.xml.jaxp-provider" \
          org.jboss.as.standalone \
          -Djboss.home.dir=\"$JBOSS_HOME\" \
-         "$@" "&"
+         -c $JBOSS_XML_CONFIG "$@" "&"
       JBOSS_PID=$!
       # Trap common signals and relay them to the jboss process
       trap "kill -HUP  $JBOSS_PID" HUP
