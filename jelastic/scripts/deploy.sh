@@ -19,10 +19,12 @@ function _deploy(){
      $WGET --no-check-certificate --content-disposition -P "$download_dir" "$package_url";
      local app_filename=$(ls -1 "$download_dir")
      cd "$download_dir";
+     set +f;
      [[ "$app_filename" =~ (.*.ear) ]] && mv -f "${app_filename}" "${context}.ear" || mv -f "${app_filename}" "${context}.war"
      chown jelastic:jelastic ${context}.*;
      mv ${context}.* ${WEBROOT};
      cd /; rm -rf "$download_dir";
+     set -f;
 }
 
 function _undeploy(){
