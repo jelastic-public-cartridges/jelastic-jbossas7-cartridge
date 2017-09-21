@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Simple deploy and undeploy scenarios for Wildfly9
+# Simple deploy and undeploy scenarios for jbossas7
 
 WGET=$(which wget);
 
