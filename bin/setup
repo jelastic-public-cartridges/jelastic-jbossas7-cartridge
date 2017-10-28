@@ -35,4 +35,12 @@ fi
 /sbin/iptables -t nat -I PREROUTING -p tcp -m tcp --dport 443 -j REDIRECT --to-ports 8443
 service iptables save
 
+echo -e "$(find /usr -name libjli.so -printf "%h\n")" > /etc/ld.so.conf.d/java.conf ;
+ldconfig
+
+JAVABIN=$(which java 2>/dev/null)
+[ ! -z "$JAVABIN" ] && {
+    setcap 'cap_net_bind_service=+ep' $(readlink -f "$JAVABIN")
+}
+
 yum -y install libaio &>/dev/null;
