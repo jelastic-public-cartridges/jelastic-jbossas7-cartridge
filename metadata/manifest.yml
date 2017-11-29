@@ -115,10 +115,10 @@ Endpoints:
   Public-Port-Name: REMOTING_PROXY_PORT
 - Private-IP-Name: IP
   Private-Port-Name: MANAGEMENT_NATIVE_PORT
-  Private-Port: 9999
+  Private-Port: 4949
 - Private-IP-Name: IP
   Private-Port-Name: MANAGEMENT_HTTP_PORT
-  Private-Port: 9990
+  Private-Port: 4848
 - Private-IP-Name: IP
   Private-Port-Name: MANAGEMENT_HTTPS_PORT
   Private-Port: 9993
