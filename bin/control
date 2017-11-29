@@ -155,7 +155,7 @@ function ishttpup() {
     let count=0
     while [ ${count} -lt 64 ]
     do
-        if /usr/sbin/lsof -P -n -i "@${OPENSHIFT_JBOSSAS_IP}:${OPENSHIFT_JBOSSAS_HTTP_PORT}" | grep "(LISTEN)" > /dev/null; then
+        if [ -n $(netstat -nlpt 2>&1  | grep "${OPENSHIFT_JBOSSAS_HTTP_PORT} ") ]; then
             echo "Found ${OPENSHIFT_JBOSSAS_IP}:${OPENSHIFT_JBOSSAS_HTTP_PORT} listening port"
             return 0
         fi
@@ -166,6 +166,7 @@ function ishttpup() {
 
     return 1
 }
+
 
 # Check if the server mgmt port is up
 function ismgmtup() {
