@@ -222,11 +222,11 @@ function stop() {
   if isrunning; then
     if [ -f "$JBOSSAS_PID_FILE" ]; then
       pid=$(cat $JBOSSAS_PID_FILE);
-      echo "Sending SIGTERM to jboss:$pid ..." 1>&2
+      echo "Sending SIGTERM to jboss:$pid ..." 2>&1
       killtree $pid
       rm -f $JBOSSAS_PID_FILE;
     else
-      echo "Failed to locate JBOSS PID File" 1>&2
+      echo "Failed to locate JBOSS PID File" 2>&1
     fi
     else
       echo "$cartridge_type server already stopped";
